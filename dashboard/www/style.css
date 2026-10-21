@@ -1,0 +1,51 @@
+body{background:#0c1420;color:#dce5ee}.navbar,.bslib-sidebar-layout>.sidebar{background:#101d2c!important}.brand{font-weight:800;letter-spacing:2px}.brand-sub{font-size:11px;color:#8dabbc;letter-spacing:1px}.intro{padding:12px 0 18px}.intro h2{font-weight:750;font-size:27px}.intro p,.small-note,.footer-note{color:#9aafc0}.sidebar-label{font-size:11px;letter-spacing:2px;color:#43c6b5;margin-bottom:12px}.card{background:#142131;border:1px solid #293749;border-radius:14px;box-shadow:0 8px 24px #0002}.card-header{background:transparent;border-bottom:1px solid #293749;font-weight:650}.bslib-value-box{min-height:125px;background:#152b37!important;border:1px solid #315160}.small-note{font-size:12px;margin-top:20px}.warning-note{padding:18px;border-left:3px solid #d6ad64;background:#30291d;border-radius:8px;margin:12px 0}.footer-note{padding:22px 8px;font-size:12px}.nav-link.active{color:#43c6b5!important}.btn{border-radius:7px}.dataTables_wrapper{font-size:13px}
+/* TechPulse usability layout patch */
+/* Let content determine page height rather than compressing all cards to the viewport. */
+.bslib-sidebar-layout > .main {
+  overflow-y: auto !important;
+  min-height: 0;
+  padding: 24px !important;
+}
+.intro {padding: 0 0 14px;}
+.intro h2 {font-size: 25px;line-height: 1.3;margin: 0 0 7px;}
+.intro p {font-size: 14px;margin-bottom: 8px;}
+.bslib-value-box {
+  min-height: 125px !important;
+  height: auto !important;
+  box-shadow: none;
+  border-radius: 10px;
+}
+.bslib-value-box .value-box-area {padding: 19px 22px !important;}
+.bslib-value-box .value-box-title {font-size: 13px !important;color: #a9bdca;}
+.bslib-value-box .value-box-value {
+  font-size: 28px !important;
+  line-height: 1.2 !important;
+  overflow-wrap: anywhere;
+}
+.card {box-shadow: none;border-radius: 10px;}
+.card-header {font-size: 14px;padding: 13px 16px;}
+/* Keep all tabs on one predictable, horizontally scrollable row. */
+.nav-tabs {
+  display: flex;
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  gap: 2px;
+  padding: 6px;
+}
+.nav-tabs .nav-item {flex: 0 0 auto;}
+.nav-tabs .nav-link {font-size: 13px;padding: 11px 15px;border-radius: 6px;}
+.nav-tabs .nav-link.active {background: #203747 !important;border-color: transparent;}
+.tab-content {overflow: visible;}
+.tab-pane {padding-top: 4px;}
+.sidebar .form-group {margin-bottom: 14px;}
+.sidebar .control-label {font-size: 13px;margin-bottom: 6px;}
+.sidebar .small-note {line-height: 1.6;}
+.footer-note {padding: 16px 8px;}
+* {scrollbar-width: thin;scrollbar-color: #526676 #101d2c;}
+@media(max-width: 900px) {
+  .bslib-sidebar-layout > .main {padding: 16px !important;}
+  .intro h2 {font-size: 22px;}
+  .brand-sub {display: none;}
+}
