@@ -1,0 +1,8 @@
+source("R/dashboard_data.R")
+d <- load_jobs()
+s <- skill_rows(d)
+for (field in c("role","company","location")) write.csv(counts(d[[field]],nrow(d)),paste0("data/processed/",field,"_summary.csv"),row.names=FALSE)
+write.csv(counts(s$skill,max(1,nrow(s))),"data/processed/skill_summary.csv",row.names=FALSE)
+if(nrow(s)) write.csv(as.data.frame(table(s$role,s$skill)),"data/processed/role_skill_summary.csv",row.names=FALSE)
+write.csv(counts(d$salary_status,nrow(d)),"data/processed/salary_quality_summary.csv",row.names=FALSE)
+cat("Analysis complete:",nrow(d),"listings.\n")

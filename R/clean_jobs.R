@@ -55,12 +55,6 @@ jobs_clean <- lapply(jobs_raw, function(job) {
       NA_character_
     },
 
-    salary_is_predicted = if (!is.null(job$salary_is_predicted)) {
-      job$salary_is_predicted
-    } else {
-      NA_character_
-    },
-
     description = if (!is.null(job$description)) {
       job$description
     } else {
@@ -139,7 +133,7 @@ jobs_clean <- jobs_clean |>
       TRUE ~ "Unflagged; period and units unverified"
     )
   ) |>
-  distinct(job_id, .keep_all = TRUE)
+  filter(is.na(job_id) | !duplicated(job_id))
 
 # -----------------------------
 # Save processed dataset
