@@ -1,0 +1,3 @@
+Source repository: https://github.com/sanjeev-0101/techpulse
+Base commit: d65919fa6187c21e3ebd0560332d78b7beedd095
+Completion package adds dashboard, analysis, tests and documentation. See SETUP_AND_TEST.md for runtime limitations.
