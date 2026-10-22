@@ -1,1 +1,8 @@
 .Renviron
+.Rhistory
+.RData
+.Rproj.user/
+.refresh-lock/
+
+# Local layout backups
+*.backup-*
