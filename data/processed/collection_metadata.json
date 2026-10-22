@@ -1,0 +1,88 @@
+{
+  "source": "Adzuna Jobs API",
+  "country": "in",
+  "collected_at_utc": "2026-10-22 14:05:54 UTC",
+  "search_terms": [
+    "software developer",
+    "software engineer",
+    "data scientist",
+    "data analyst",
+    "machine learning engineer",
+    "AI engineer",
+    "cloud engineer",
+    "DevOps engineer",
+    "cybersecurity engineer",
+    "frontend developer",
+    "backend developer",
+    "full stack developer"
+  ],
+  "pages_per_role": 1,
+  "results_per_page": 50,
+  "request_count": 12,
+  "records_returned": 600,
+  "unique_records": 440,
+  "duplicate_ids_removed": 160,
+  "records_without_id": 0,
+  "per_search": [
+    {
+      "search_term": "software developer",
+      "page": 1,
+      "returned": 50
+    },
+    {
+      "search_term": "software engineer",
+      "page": 1,
+      "returned": 50
+    },
+    {
+      "search_term": "data scientist",
+      "page": 1,
+      "returned": 50
+    },
+    {
+      "search_term": "data analyst",
+      "page": 1,
+      "returned": 50
+    },
+    {
+      "search_term": "machine learning engineer",
+      "page": 1,
+      "returned": 50
+    },
+    {
+      "search_term": "AI engineer",
+      "page": 1,
+      "returned": 50
+    },
+    {
+      "search_term": "cloud engineer",
+      "page": 1,
+      "returned": 50
+    },
+    {
+      "search_term": "DevOps engineer",
+      "page": 1,
+      "returned": 50
+    },
+    {
+      "search_term": "cybersecurity engineer",
+      "page": 1,
+      "returned": 50
+    },
+    {
+      "search_term": "frontend developer",
+      "page": 1,
+      "returned": 50
+    },
+    {
+      "search_term": "backend developer",
+      "page": 1,
+      "returned": 50
+    },
+    {
+      "search_term": "full stack developer",
+      "page": 1,
+      "returned": 50
+    }
+  ]
+}

@@ -1,150 +1,86 @@
-library(jsonlite)
-library(dplyr)
-library(tidyr)
-library(stringr)
+suppressPackageStartupMessages({
+  library(jsonlite)
+  library(dplyr)
+  library(stringr)
+})
 
-# -----------------------------
-# TechPulse - Data Cleaning
-# -----------------------------
+raw_path <- "data/raw/jobs_raw.json"
+output_path <- "data/processed/jobs_clean.csv"
 
-# Load raw API data
-jobs_raw <- fromJSON(
-  "data/raw/jobs_raw.json",
-  simplifyVector = FALSE
-)
+if (!file.exists(raw_path)) stop("Raw jobs file not found. Run R/collect_jobs.R first.")
+jobs_raw <- fromJSON(raw_path, simplifyVector = FALSE)
+if (!length(jobs_raw)) stop("Raw jobs file contains no listings; processed data was not overwritten.")
 
-# Convert each job into a clean row
-jobs_clean <- lapply(jobs_raw, function(job) {
+value_or_na <- function(x) {
+  if (is.null(x) || !length(x) || identical(x, "")) NA_character_ else as.character(x[[1]])
+}
+nested_value <- function(x, ...) {
+  keys <- list(...)
+  for (key in keys) {
+    if (is.null(x) || is.null(x[[key]])) return(NA_character_)
+    x <- x[[key]]
+  }
+  value_or_na(x)
+}
+num_or_na <- function(x) {
+  if (is.null(x) || !length(x)) return(NA_real_)
+  y <- suppressWarnings(as.numeric(x[[1]]))
+  if (!length(y) || !is.finite(y)) NA_real_ else y
+}
+bool_or_na <- function(x) {
+  if (is.null(x) || !length(x)) return(NA)
+  suppressWarnings(as.logical(x[[1]]))
+}
 
+jobs_clean <- bind_rows(lapply(jobs_raw, function(job) {
   data.frame(
-    job_id = if (!is.null(job$id)) {
-      as.character(job$id)
-    } else {
-      NA_character_
-    },
-
-    title = if (!is.null(job$title)) job$title else NA_character_,
-
-    company = if (!is.null(job$company$display_name)) {
-      job$company$display_name
-    } else {
-      NA_character_
-    },
-
-    location = if (!is.null(job$location$display_name)) {
-      job$location$display_name
-    } else {
-      NA_character_
-    },
-
-    category = if (!is.null(job$category$label)) {
-      job$category$label
-    } else {
-      NA_character_
-    },
-
-    contract_time = if (!is.null(job$contract_time)) {
-      job$contract_time
-    } else {
-      NA_character_
-    },
-
-    created = if (!is.null(job$created)) {
-      job$created
-    } else {
-      NA_character_
-    },
-
-    description = if (!is.null(job$description)) {
-      job$description
-    } else {
-      NA_character_
-    },
-
-    redirect_url = if (!is.null(job$redirect_url)) {
-      job$redirect_url
-    } else {
-      NA_character_
-    },
-
-    salary_min = if (!is.null(job$salary_min)) {
-      as.numeric(job$salary_min)
-    } else {
-      NA_real_
-    },
-
-    salary_max = if (!is.null(job$salary_max)) {
-      as.numeric(job$salary_max)
-    } else {
-      NA_real_
-    },
-
-    salary_is_predicted = if (!is.null(job$salary_is_predicted)) {
-      as.logical(job$salary_is_predicted)
-    } else {
-      NA
-    },
-
+    job_id = value_or_na(job$id),
+    title = value_or_na(job$title),
+    company = nested_value(job, "company", "display_name"),
+    location = nested_value(job, "location", "display_name"),
+    category = nested_value(job, "category", "label"),
+    contract_time = value_or_na(job$contract_time),
+    created = value_or_na(job$created),
+    description = value_or_na(job$description),
+    redirect_url = value_or_na(job$redirect_url),
+    salary_min = num_or_na(job$salary_min),
+    salary_max = num_or_na(job$salary_max),
+    salary_is_predicted = bool_or_na(job$salary_is_predicted),
     stringsAsFactors = FALSE
   )
-
-}) |>
-  bind_rows()
-
-# -----------------------------
-# Basic cleaning
-# -----------------------------
+}))
 
 jobs_clean <- jobs_clean |>
   mutate(
-    title = str_squish(title),
-    company = str_squish(company),
-    location = str_squish(location),
-    category = str_squish(category),
-    contract_time = str_squish(contract_time),
-    description = str_squish(description),
-
-    created = as.POSIXct(
-      created,
-      format = "%Y-%m-%dT%H:%M:%SZ",
-      tz = "UTC"
-    ),
-
+    across(c(title, company, location, category, contract_time, description),
+           ~ str_squish(.x)),
+    created = as.POSIXct(created, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
     average_salary = if_else(
-      !is.na(salary_min) &
-        !is.na(salary_max) &
-        salary_min >= 0 &
-        salary_max >= salary_min,
-      (salary_min + salary_max) / 2,
-      NA_real_
+      is.finite(salary_min) & is.finite(salary_max) &
+        salary_min >= 0 & salary_max >= salary_min,
+      (salary_min + salary_max) / 2, NA_real_
     ),
-    
-    salary_low_minimum = !is.na(salary_min) & salary_min < 10000,
-
-    salary_wide_range = !is.na(salary_min) &
-      !is.na(salary_max) &
-      salary_max / pmax(salary_min, 1) > 50,
-
     salary_quality = case_when(
-      is.na(salary_min) | is.na(salary_max) ~ "Missing salary",
-      salary_low_minimum & salary_wide_range ~ "Review low minimum and wide range",
-      salary_low_minimum ~ "Review low minimum",
-      salary_wide_range ~ "Review wide range",
+      !is.finite(salary_min) | !is.finite(salary_max) ~ "Missing salary",
+      salary_min < 0 | salary_max < salary_min ~ "Invalid range",
+      salary_min < 10000 & salary_max / pmax(salary_min, 1) > 50 ~ "Review low minimum and wide range",
+      salary_min < 10000 ~ "Review low minimum",
+      salary_max / pmax(salary_min, 1) > 50 ~ "Review wide range",
       TRUE ~ "Unflagged; period and units unverified"
     )
-  ) |>
-  filter(is.na(job_id) | !duplicated(job_id))
+  )
 
-# -----------------------------
-# Save processed dataset
-# -----------------------------
+# Deduplicate known IDs, while retaining records whose API ID is missing.
+has_id <- !is.na(jobs_clean$job_id) & nzchar(jobs_clean$job_id)
+jobs_clean <- jobs_clean[!has_id | !duplicated(jobs_clean$job_id), , drop = FALSE]
 
-write.csv(
-  jobs_clean,
-  "data/processed/jobs_clean.csv",
-  row.names = FALSE
-)
-
+dir.create(dirname(output_path), recursive = TRUE, showWarnings = FALSE)
+tmp <- tempfile("jobs-clean-", tmpdir = dirname(output_path), fileext = ".csv")
+write.csv(jobs_clean, tmp, row.names = FALSE, na = "")
+if (!file.rename(tmp, output_path)) {
+  unlink(tmp)
+  stop("Could not publish cleaned data. Check file permissions.")
+}
 cat("Clean jobs:", nrow(jobs_clean), "\n")
 cat("Columns:", ncol(jobs_clean), "\n")
 cat("Processed dataset saved successfully.\n")

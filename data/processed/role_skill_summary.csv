@@ -1,44 +1,48 @@
 "Var1","Var2","Freq"
-"AI / ML","Angular",0
-"Backend","Angular",1
+"AI / ML","Angular",1
+"Backend","Angular",0
 "Cloud","Angular",0
 "Cybersecurity","Angular",0
 "Data Analyst","Angular",0
 "Data Scientist","Angular",0
-"DevOps","Angular",1
-"Frontend","Angular",7
-"Full Stack","Angular",3
-"Software Engineering","Angular",4
-"AI / ML","AWS",6
-"Backend","AWS",8
-"Cloud","AWS",14
+"DevOps","Angular",0
+"Frontend","Angular",1
+"Full Stack","Angular",10
+"Other","Angular",0
+"Software Engineering","Angular",1
+"AI / ML","AWS",2
+"Backend","AWS",2
+"Cloud","AWS",4
 "Cybersecurity","AWS",1
 "Data Analyst","AWS",0
 "Data Scientist","AWS",0
-"DevOps","AWS",11
-"Frontend","AWS",1
-"Full Stack","AWS",2
-"Software Engineering","AWS",6
-"AI / ML","Azure",2
+"DevOps","AWS",3
+"Frontend","AWS",0
+"Full Stack","AWS",1
+"Other","AWS",12
+"Software Engineering","AWS",5
+"AI / ML","Azure",1
 "Backend","Azure",1
-"Cloud","Azure",12
+"Cloud","Azure",18
 "Cybersecurity","Azure",1
 "Data Analyst","Azure",0
 "Data Scientist","Azure",0
-"DevOps","Azure",7
+"DevOps","Azure",2
 "Frontend","Azure",0
-"Full Stack","Azure",1
-"Software Engineering","Azure",1
-"AI / ML","C#",0
-"Backend","C#",2
-"Cloud","C#",2
+"Full Stack","Azure",3
+"Other","Azure",10
+"Software Engineering","Azure",0
+"AI / ML","C#",1
+"Backend","C#",0
+"Cloud","C#",0
 "Cybersecurity","C#",0
 "Data Analyst","C#",0
 "Data Scientist","C#",0
-"DevOps","C#",0
+"DevOps","C#",1
 "Frontend","C#",0
-"Full Stack","C#",1
-"Software Engineering","C#",10
+"Full Stack","C#",2
+"Other","C#",1
+"Software Engineering","C#",0
 "AI / ML","C++",0
 "Backend","C++",0
 "Cloud","C++",0
@@ -47,29 +51,32 @@
 "Data Scientist","C++",0
 "DevOps","C++",0
 "Frontend","C++",0
-"Full Stack","C++",0
-"Software Engineering","C++",8
+"Full Stack","C++",1
+"Other","C++",0
+"Software Engineering","C++",2
 "AI / ML","CSS",0
-"Backend","CSS",2
+"Backend","CSS",0
 "Cloud","CSS",0
 "Cybersecurity","CSS",0
 "Data Analyst","CSS",0
 "Data Scientist","CSS",0
 "DevOps","CSS",0
-"Frontend","CSS",17
+"Frontend","CSS",0
 "Full Stack","CSS",1
-"Software Engineering","CSS",2
-"AI / ML","Data Science",3
+"Other","CSS",0
+"Software Engineering","CSS",0
+"AI / ML","Data Science",2
 "Backend","Data Science",0
 "Cloud","Data Science",0
 "Cybersecurity","Data Science",0
 "Data Analyst","Data Science",1
-"Data Scientist","Data Science",28
+"Data Scientist","Data Science",3
 "DevOps","Data Science",0
 "Frontend","Data Science",0
 "Full Stack","Data Science",0
-"Software Engineering","Data Science",0
-"AI / ML","Deep Learning",4
+"Other","Data Science",10
+"Software Engineering","Data Science",1
+"AI / ML","Deep Learning",2
 "Backend","Deep Learning",0
 "Cloud","Deep Learning",0
 "Cybersecurity","Deep Learning",0
@@ -78,198 +85,185 @@
 "DevOps","Deep Learning",0
 "Frontend","Deep Learning",0
 "Full Stack","Deep Learning",0
-"Software Engineering","Deep Learning",1
-"AI / ML","Django",1
-"Backend","Django",2
-"Cloud","Django",0
-"Cybersecurity","Django",0
-"Data Analyst","Django",0
-"Data Scientist","Django",0
-"DevOps","Django",0
-"Frontend","Django",1
-"Full Stack","Django",0
-"Software Engineering","Django",0
-"AI / ML","Docker",2
-"Backend","Docker",0
-"Cloud","Docker",0
+"Other","Deep Learning",0
+"Software Engineering","Deep Learning",0
+"AI / ML","Docker",0
+"Backend","Docker",1
+"Cloud","Docker",1
 "Cybersecurity","Docker",0
 "Data Analyst","Docker",0
 "Data Scientist","Docker",0
-"DevOps","Docker",6
+"DevOps","Docker",1
 "Frontend","Docker",0
-"Full Stack","Docker",1
-"Software Engineering","Docker",3
+"Full Stack","Docker",0
+"Other","Docker",1
+"Software Engineering","Docker",0
 "AI / ML","Express",0
-"Backend","Express",4
+"Backend","Express",0
 "Cloud","Express",0
-"Cybersecurity","Express",3
+"Cybersecurity","Express",0
 "Data Analyst","Express",0
 "Data Scientist","Express",0
 "DevOps","Express",0
-"Frontend","Express",1
-"Full Stack","Express",0
+"Frontend","Express",0
+"Full Stack","Express",1
+"Other","Express",0
 "Software Engineering","Express",0
-"AI / ML","Flask",0
-"Backend","Flask",2
-"Cloud","Flask",0
-"Cybersecurity","Flask",0
-"Data Analyst","Flask",0
-"Data Scientist","Flask",0
-"DevOps","Flask",0
-"Frontend","Flask",0
-"Full Stack","Flask",0
-"Software Engineering","Flask",0
 "AI / ML","Git",0
-"Backend","Git",3
+"Backend","Git",1
 "Cloud","Git",0
 "Cybersecurity","Git",0
 "Data Analyst","Git",0
 "Data Scientist","Git",0
 "DevOps","Git",1
 "Frontend","Git",0
-"Full Stack","Git",2
+"Full Stack","Git",0
+"Other","Git",0
 "Software Engineering","Git",0
 "AI / ML","GitHub",1
-"Backend","GitHub",1
-"Cloud","GitHub",1
+"Backend","GitHub",0
+"Cloud","GitHub",0
 "Cybersecurity","GitHub",0
 "Data Analyst","GitHub",0
 "Data Scientist","GitHub",0
 "DevOps","GitHub",1
 "Frontend","GitHub",0
 "Full Stack","GitHub",0
+"Other","GitHub",1
 "Software Engineering","GitHub",0
 "AI / ML","Google Cloud",1
-"Backend","Google Cloud",1
-"Cloud","Google Cloud",6
+"Backend","Google Cloud",0
+"Cloud","Google Cloud",18
 "Cybersecurity","Google Cloud",0
 "Data Analyst","Google Cloud",0
 "Data Scientist","Google Cloud",0
-"DevOps","Google Cloud",6
+"DevOps","Google Cloud",1
 "Frontend","Google Cloud",0
 "Full Stack","Google Cloud",0
-"Software Engineering","Google Cloud",0
+"Other","Google Cloud",9
+"Software Engineering","Google Cloud",2
 "AI / ML","HTML",0
-"Backend","HTML",2
+"Backend","HTML",0
 "Cloud","HTML",0
 "Cybersecurity","HTML",0
 "Data Analyst","HTML",0
 "Data Scientist","HTML",0
-"DevOps","HTML",1
-"Frontend","HTML",17
-"Full Stack","HTML",3
-"Software Engineering","HTML",3
-"AI / ML","Java",1
-"Backend","Java",2
-"Cloud","Java",2
+"DevOps","HTML",0
+"Frontend","HTML",0
+"Full Stack","HTML",1
+"Other","HTML",0
+"Software Engineering","HTML",0
+"AI / ML","Java",0
+"Backend","Java",7
+"Cloud","Java",1
 "Cybersecurity","Java",0
 "Data Analyst","Java",0
 "Data Scientist","Java",0
-"DevOps","Java",0
+"DevOps","Java",1
 "Frontend","Java",2
-"Full Stack","Java",3
-"Software Engineering","Java",16
+"Full Stack","Java",15
+"Other","Java",1
+"Software Engineering","Java",7
 "AI / ML","JavaScript",0
-"Backend","JavaScript",5
+"Backend","JavaScript",0
 "Cloud","JavaScript",0
 "Cybersecurity","JavaScript",0
 "Data Analyst","JavaScript",0
 "Data Scientist","JavaScript",0
-"DevOps","JavaScript",0
-"Frontend","JavaScript",18
-"Full Stack","JavaScript",4
-"Software Engineering","JavaScript",5
-"AI / ML","Kubernetes",1
-"Backend","Kubernetes",0
-"Cloud","Kubernetes",4
+"DevOps","JavaScript",1
+"Frontend","JavaScript",1
+"Full Stack","JavaScript",2
+"Other","JavaScript",2
+"Software Engineering","JavaScript",0
+"AI / ML","Kubernetes",0
+"Backend","Kubernetes",2
+"Cloud","Kubernetes",17
 "Cybersecurity","Kubernetes",0
 "Data Analyst","Kubernetes",0
 "Data Scientist","Kubernetes",0
-"DevOps","Kubernetes",10
+"DevOps","Kubernetes",3
 "Frontend","Kubernetes",0
-"Full Stack","Kubernetes",0
-"Software Engineering","Kubernetes",3
+"Full Stack","Kubernetes",1
+"Other","Kubernetes",2
+"Software Engineering","Kubernetes",0
 "AI / ML","Linux",0
-"Backend","Linux",1
-"Cloud","Linux",1
-"Cybersecurity","Linux",1
+"Backend","Linux",0
+"Cloud","Linux",0
+"Cybersecurity","Linux",0
 "Data Analyst","Linux",0
 "Data Scientist","Linux",0
-"DevOps","Linux",4
+"DevOps","Linux",1
 "Frontend","Linux",0
 "Full Stack","Linux",0
-"Software Engineering","Linux",3
-"AI / ML","Machine Learning",55
-"Backend","Machine Learning",1
+"Other","Linux",0
+"Software Engineering","Linux",1
+"AI / ML","Machine Learning",15
+"Backend","Machine Learning",0
 "Cloud","Machine Learning",0
 "Cybersecurity","Machine Learning",0
-"Data Analyst","Machine Learning",0
-"Data Scientist","Machine Learning",19
+"Data Analyst","Machine Learning",1
+"Data Scientist","Machine Learning",3
 "DevOps","Machine Learning",0
 "Frontend","Machine Learning",0
 "Full Stack","Machine Learning",0
-"Software Engineering","Machine Learning",1
-"AI / ML","MongoDB",0
-"Backend","MongoDB",9
-"Cloud","MongoDB",0
-"Cybersecurity","MongoDB",0
-"Data Analyst","MongoDB",1
-"Data Scientist","MongoDB",0
-"DevOps","MongoDB",0
-"Frontend","MongoDB",0
-"Full Stack","MongoDB",1
-"Software Engineering","MongoDB",1
+"Other","Machine Learning",7
+"Software Engineering","Machine Learning",2
 "AI / ML","MySQL",0
-"Backend","MySQL",2
+"Backend","MySQL",1
 "Cloud","MySQL",0
 "Cybersecurity","MySQL",0
 "Data Analyst","MySQL",0
 "Data Scientist","MySQL",0
 "DevOps","MySQL",0
-"Frontend","MySQL",1
+"Frontend","MySQL",0
 "Full Stack","MySQL",1
-"Software Engineering","MySQL",1
+"Other","MySQL",0
+"Software Engineering","MySQL",0
 "AI / ML","Node.js",0
-"Backend","Node.js",14
-"Cloud","Node.js",1
+"Backend","Node.js",0
+"Cloud","Node.js",0
 "Cybersecurity","Node.js",0
 "Data Analyst","Node.js",0
 "Data Scientist","Node.js",0
-"DevOps","Node.js",1
-"Frontend","Node.js",5
-"Full Stack","Node.js",6
+"DevOps","Node.js",0
+"Frontend","Node.js",2
+"Full Stack","Node.js",1
+"Other","Node.js",0
 "Software Engineering","Node.js",0
 "AI / ML","PostgreSQL",0
-"Backend","PostgreSQL",5
+"Backend","PostgreSQL",1
 "Cloud","PostgreSQL",0
 "Cybersecurity","PostgreSQL",0
 "Data Analyst","PostgreSQL",0
 "Data Scientist","PostgreSQL",0
-"DevOps","PostgreSQL",1
+"DevOps","PostgreSQL",0
 "Frontend","PostgreSQL",0
-"Full Stack","PostgreSQL",1
-"Software Engineering","PostgreSQL",0
+"Full Stack","PostgreSQL",0
+"Other","PostgreSQL",0
+"Software Engineering","PostgreSQL",1
 "AI / ML","Power BI",0
-"Backend","Power BI",1
+"Backend","Power BI",0
 "Cloud","Power BI",0
 "Cybersecurity","Power BI",0
-"Data Analyst","Power BI",3
+"Data Analyst","Power BI",2
 "Data Scientist","Power BI",0
 "DevOps","Power BI",0
 "Frontend","Power BI",0
 "Full Stack","Power BI",0
-"Software Engineering","Power BI",2
-"AI / ML","Python",14
-"Backend","Python",8
-"Cloud","Python",5
+"Other","Power BI",0
+"Software Engineering","Power BI",0
+"AI / ML","Python",4
+"Backend","Python",1
+"Cloud","Python",0
 "Cybersecurity","Python",0
-"Data Analyst","Python",7
-"Data Scientist","Python",5
-"DevOps","Python",6
-"Frontend","Python",1
+"Data Analyst","Python",0
+"Data Scientist","Python",0
+"DevOps","Python",1
+"Frontend","Python",0
 "Full Stack","Python",4
-"Software Engineering","Python",11
-"AI / ML","PyTorch",2
+"Other","Python",2
+"Software Engineering","Python",9
+"AI / ML","PyTorch",1
 "Backend","PyTorch",0
 "Cloud","PyTorch",0
 "Cybersecurity","PyTorch",0
@@ -278,94 +272,71 @@
 "DevOps","PyTorch",0
 "Frontend","PyTorch",0
 "Full Stack","PyTorch",0
+"Other","PyTorch",0
 "Software Engineering","PyTorch",0
-"AI / ML","R",3
+"AI / ML","R",1
 "Backend","R",0
 "Cloud","R",0
-"Cybersecurity","R",2
+"Cybersecurity","R",1
 "Data Analyst","R",1
-"Data Scientist","R",4
+"Data Scientist","R",0
 "DevOps","R",0
 "Frontend","R",0
 "Full Stack","R",0
-"Software Engineering","R",0
+"Other","R",3
+"Software Engineering","R",1
 "AI / ML","React",0
-"Backend","React",1
-"Cloud","React",0
+"Backend","React",0
+"Cloud","React",1
 "Cybersecurity","React",0
 "Data Analyst","React",0
 "Data Scientist","React",0
 "DevOps","React",1
-"Frontend","React",22
-"Full Stack","React",9
-"Software Engineering","React",1
-"AI / ML","Scikit-learn",1
-"Backend","Scikit-learn",0
-"Cloud","Scikit-learn",0
-"Cybersecurity","Scikit-learn",0
-"Data Analyst","Scikit-learn",0
-"Data Scientist","Scikit-learn",0
-"DevOps","Scikit-learn",0
-"Frontend","Scikit-learn",0
-"Full Stack","Scikit-learn",0
-"Software Engineering","Scikit-learn",0
-"AI / ML","Spring",1
-"Backend","Spring",1
+"Frontend","React",5
+"Full Stack","React",4
+"Other","React",0
+"Software Engineering","React",5
+"AI / ML","Spring",0
+"Backend","Spring",4
 "Cloud","Spring",0
 "Cybersecurity","Spring",0
 "Data Analyst","Spring",0
 "Data Scientist","Spring",0
-"DevOps","Spring",0
-"Frontend","Spring",2
-"Full Stack","Spring",1
-"Software Engineering","Spring",3
-"AI / ML","SQL",6
-"Backend","SQL",8
+"DevOps","Spring",1
+"Frontend","Spring",1
+"Full Stack","Spring",2
+"Other","Spring",0
+"Software Engineering","Spring",1
+"AI / ML","SQL",1
+"Backend","SQL",1
 "Cloud","SQL",0
 "Cybersecurity","SQL",0
-"Data Analyst","SQL",9
-"Data Scientist","SQL",3
+"Data Analyst","SQL",0
+"Data Scientist","SQL",0
 "DevOps","SQL",0
 "Frontend","SQL",0
-"Full Stack","SQL",0
-"Software Engineering","SQL",8
+"Full Stack","SQL",2
+"Other","SQL",4
+"Software Engineering","SQL",2
 "AI / ML","Tableau",0
 "Backend","Tableau",0
 "Cloud","Tableau",0
 "Cybersecurity","Tableau",0
-"Data Analyst","Tableau",2
+"Data Analyst","Tableau",1
 "Data Scientist","Tableau",0
 "DevOps","Tableau",0
 "Frontend","Tableau",0
 "Full Stack","Tableau",0
+"Other","Tableau",0
 "Software Engineering","Tableau",0
-"AI / ML","TensorFlow",2
-"Backend","TensorFlow",0
-"Cloud","TensorFlow",0
-"Cybersecurity","TensorFlow",0
-"Data Analyst","TensorFlow",0
-"Data Scientist","TensorFlow",1
-"DevOps","TensorFlow",0
-"Frontend","TensorFlow",0
-"Full Stack","TensorFlow",0
-"Software Engineering","TensorFlow",0
-"AI / ML","TypeScript",1
-"Backend","TypeScript",1
+"AI / ML","TypeScript",0
+"Backend","TypeScript",0
 "Cloud","TypeScript",0
 "Cybersecurity","TypeScript",0
 "Data Analyst","TypeScript",0
 "Data Scientist","TypeScript",0
-"DevOps","TypeScript",0
-"Frontend","TypeScript",2
-"Full Stack","TypeScript",2
-"Software Engineering","TypeScript",3
-"AI / ML","Vue",0
-"Backend","Vue",0
-"Cloud","Vue",0
-"Cybersecurity","Vue",0
-"Data Analyst","Vue",0
-"Data Scientist","Vue",0
-"DevOps","Vue",0
-"Frontend","Vue",2
-"Full Stack","Vue",1
-"Software Engineering","Vue",0
+"DevOps","TypeScript",1
+"Frontend","TypeScript",1
+"Full Stack","TypeScript",3
+"Other","TypeScript",1
+"Software Engineering","TypeScript",1
