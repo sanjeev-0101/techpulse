@@ -1,4 +1,4 @@
-# TechPulse — Tech Job Market Intelligence Dashboard
+# TechPulse — Tech Job Market Analysis Dashboard
 
 TechPulse is an interactive **R Shiny** dashboard for exploring technology job listings and identifying patterns in job roles, skill mentions, companies, locations, and salary-data availability. It uses job listings collected from the **Adzuna API** and provides a repeatable pipeline for collecting, cleaning, extracting skills, analyzing, and visualizing the data.
 
