@@ -199,6 +199,22 @@ server <- function(input,output,session) {
   z<-counts(d$city,10)
   bars(z,"#38b9a7",source="city_plot")
  })
+ 
+output$companies <- renderPlotly({
+  d <- filtered()
+
+  d <- d[
+    !is.na(d$company) &
+    nzchar(trimws(d$company)) &
+    d$company != "Unknown",
+    ,
+    drop = FALSE
+  ]
+
+  z <- counts(d$company, 10)
+  bars(z, "#18a58f")
+})
+
  observeEvent(event_data("plotly_click",source="city_plot"),{
   click<-event_data("plotly_click",source="city_plot")
   if(is.null(click)||is.null(click$y)) return()
