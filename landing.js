@@ -23,7 +23,7 @@
           )
         ) {
       link.href = configuredUrl;
-      link.target = "_blank";
+      link.target = "_self";
       link.rel = "noopener noreferrer";
     } else {
       link.href = "#explore";
