@@ -22,7 +22,7 @@
             /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?(\/.*)?$/i.test(configuredUrl)
           )
         ) {
-      link.href = "https://techpulse-gateway.sanjeevkarunanithy.workers.dev/dashboard/";
+      link.href = "https://techpulse.sanjeevkarunanithy.workers.dev/dashboard/";
       link.target = "_self";
       link.removeAttribute("rel");
     } else {
