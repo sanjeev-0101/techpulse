@@ -6,3 +6,8 @@
 
 # Local layout backups
 *.backup-*
+
+.Ruserdata
+.env
+.env.*
+!.env.example

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TechPulse is a technology job-market intelligence project exploring roles, skills, companies, locations and salary-data quality across collected job listings.">
+  <meta name="theme-color" content="#f5f5f2">
+  <title>TechPulse — Read the technology job market</title>
+  <link rel="stylesheet" href="landing.css">
+  <script src="site-config.js"></script>
+  <script src="landing.js" defer></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="TechPulse home">
+        <img src="assets/techpulse-mark.png"
+            class="brand-mark-image"
+            alt="TechPulse logo">
+        <span class="brand-name">techpulse</span>
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#explore">What you can explore</a>
+        <a href="#methodology">Methodology</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme">◐ <span>Theme</span></button>
+        <a class="header-cta dashboard-link" href="#explore">Open dashboard <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Make sense of<br><span>the market.</span></h1>
+          <p class="hero-lede">A closer look at the roles being advertised, the skills employers mention, and the patterns emerging across technology job listings.</p>
+          <div class="hero-actions" id="explore">
+            <a class="button button-primary dashboard-link" href="#explore">Explore the dashboard <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#about">Get to know the project <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="hero-note">An independent data exploration project · India-focused collection</p>
+        </div>
+        <div class="hero-visual" aria-label="Abstract data visualisation showing a set of job market signals">
+          <div class="visual-topline"><span>MARKET SIGNALS</span><span>01 / OVERVIEW</span></div>
+          <div class="signal-heading">A market is more<br>than a job title.</div>
+          <div class="signal-chart">
+            <div class="chart-axis"><span>SKILLS</span><span>ROLE FAMILIES</span><span>LOCATIONS</span></div>
+            <div class="bars" aria-hidden="true">
+              <i style="--h:42%"></i><i style="--h:68%"></i><i style="--h:53%"></i><i style="--h:84%"></i><i style="--h:61%"></i><i style="--h:94%"></i><i style="--h:73%"></i><i style="--h:48%"></i><i style="--h:78%"></i><i style="--h:58%"></i><i style="--h:88%"></i><i style="--h:65%"></i>
+            </div>
+            <div class="chart-baseline"></div>
+            <div class="chart-legend"><span><b></b> LISTING SIGNALS</span><span>ILLUSTRATIVE VISUAL</span></div>
+          </div>
+          <div class="visual-footer"><span>TECHPULSE / RESEARCH NOTE</span><span>IN</span></div>
+        </div>
+      </section>
+
+      <section class="intro-section section-rule" id="about">
+        <div class="section-index">01 <span>THE PROJECT</span></div>
+        <div class="intro-content">
+          <h2>Turning job listings<br>into useful context.</h2>
+          <div class="intro-description">
+            <p>TechPulse collects technology job listings and organises them into a clearer view of the hiring landscape. Instead of looking at each vacancy in isolation, it brings together recurring skills, role categories, companies, locations and available salary information.</p>
+            <p>The goal is simple: make it easier to explore what employers are asking for, spot patterns in the listings, and ask better questions about the technology job market.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="explore-section section-rule">
+        <div class="section-index">02 <span>INSIDE TECHPULSE</span></div>
+        <div class="explore-content">
+          <div class="section-heading">
+            <h2>Four ways to<br>read the data.</h2>
+            <p>Move from the broad picture to the details behind individual listings.</p>
+          </div>
+          <div class="feature-list">
+            <article class="feature-row">
+              <span class="feature-number">01</span>
+              <div><h3>Market overview</h3><p>See the collected listings through role mix, skill mentions, locations and company representation.</p></div>
+              <span class="feature-arrow" aria-hidden="true">↗</span>
+            </article>
+            <article class="feature-row">
+              <span class="feature-number">02</span>
+              <div><h3>Skill intelligence</h3><p>Compare frequently mentioned skills and explore how they appear across different role families.</p></div>
+              <span class="feature-arrow" aria-hidden="true">↗</span>
+            </article>
+            <article class="feature-row">
+              <span class="feature-number">03</span>
+              <div><h3>Job explorer</h3><p>Search and filter the collected vacancies, inspect listing details and export selected records.</p></div>
+              <span class="feature-arrow" aria-hidden="true">↗</span>
+            </article>
+            <article class="feature-row">
+              <span class="feature-number">04</span>
+              <div><h3>Data & methodology</h3><p>Understand salary coverage, collection health, data limitations and how the dataset is assembled.</p></div>
+              <span class="feature-arrow" aria-hidden="true">↗</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="method-section section-rule" id="methodology">
+        <div class="section-index">03 <span>HOW TO READ IT</span></div>
+        <div class="method-content">
+          <div>
+            <h2>Useful signals.<br><span>Honest limits.</span></h2>
+          </div>
+          <div class="method-copy">
+            <p>TechPulse is based on a targeted collection of online job listings. It is a snapshot of the records gathered by the project, not a complete census of vacancies or a definitive measure of national hiring demand.</p>
+            <p>Role families and skill mentions are inferred from listing text. Salary fields may be missing, inconsistent or expressed on different bases. Treat the charts as exploratory evidence, and use the methodology section in the dashboard for context.</p>
+            <div class="method-tags"><span>R + SHINY</span><span>ADZUNA JOB API</span><span>EXPLORATORY ANALYTICS</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-cta">
+        <p class="eyebrow">THE DATA IS WAITING</p>
+        <h2>Take a closer look.</h2>
+        <p>Explore the listings, compare the signals, and see what stands out.</p>
+        <a class="button button-light dashboard-link" href="#explore">Open TechPulse dashboard <span aria-hidden="true">↗</span></a>
+        <span class="cta-footnote">Interactive dashboard · Best viewed on desktop</span>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#top">
+        <img src="assets/techpulse-mark.png"
+            class="brand-mark-image"
+            alt="TechPulse logo">
+        <span class="brand-name">techpulse</span>
+      </a>
+      <p>Technology job market intelligence, made explorable.</p>
+      <div class="footer-meta"><span>A PROJECT BY SANJEEV & HRIDHAYANSH</span><span>© <span id="year"></span> TECHPULSE</span></div>
+    </footer>
+  </div>
+  <div class="dashboard-notice" id="dashboard-notice" role="status" aria-live="polite" hidden>
+    The dashboard URL hasn't been configured yet. Add your published Shiny app URL in <code>site-config.js</code>.
+  </div>
+</body>
+</html>

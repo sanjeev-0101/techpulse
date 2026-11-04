@@ -46,23 +46,47 @@ panel <- function(title,subtitle=NULL,...,class="") div(class=paste("panel",clas
 chart <- function(id,height="340px") plotlyOutput(id,height=height)
 nav_button <- function(id,number,label) actionButton(id,label=tagList(span(number,class="nav-number"),span(label)),class="rail-link")
 ui <- fluidPage(
- theme=bs_theme(version=5, bg="#071312",fg="#e7f4f0",primary="#18a58f",base_font="system-ui"),
+ theme=bs_theme(version=5, bg="#f4f4f1",fg="#202321",primary="#343a36",base_font="system-ui"),
  tags$head(
-    tags$link(rel="stylesheet",href="style.css?v=5"),
-    tags$script(HTML("document.addEventListener('DOMContentLoaded', function(){
-      document.body.classList.remove('theme-light');
-      document.body.classList.add('theme-dark');
+    tags$link(rel="stylesheet",href="style.css?v=8"),
+    tags$script(HTML("(function(){
+      function applyTheme(theme){
+        var light = theme === 'light';
+        document.body.classList.toggle('theme-light', light);
+        document.body.classList.toggle('theme-dark', !light);
+        var btn = document.getElementById('theme_toggle');
+        if(btn) btn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+        if(window.Shiny && Shiny.setInputValue) Shiny.setInputValue('theme_mode', light ? 'light' : 'dark', {priority:'event'});
+      }
+      function initTheme(){
+        var saved = 'light';
+        try { saved = localStorage.getItem('techpulse-theme') || 'light'; } catch(e) {}
+        applyTheme(saved);
+      }
+      if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTheme);
+      else initTheme();
       document.addEventListener('click', function(e){
-        if(e.target && e.target.closest && e.target.closest('#theme_toggle')){
-          var light = document.body.classList.toggle('theme-light');
-          document.body.classList.toggle('theme-dark', !light);
-        }
-      });
-    });"))
+        var btn = e.target && e.target.closest ? e.target.closest('#theme_toggle') : null;
+        if(!btn) return;
+        var next = document.body.classList.contains('theme-light') ? 'dark' : 'light';
+        applyTheme(next);
+        try { localStorage.setItem('techpulse-theme', next); } catch(e) {}
+      }, true);
+    })();"))
    ),
  div(class="studio",
   tags$aside(class="rail",
-   div(class="wordmark",span("T",class="logo-mark"),div(strong("techpulse"),tags$small("MARKET INTELLIGENCE"))),
+   div(class="wordmark",
+        tags$img(
+          src = "techpulse-mark.png",
+          class = "brand-mark-image",
+          alt = "TechPulse logo"
+        ),
+        div(
+          strong("techpulse"),
+          tags$small("TECH MARKET ANALYSIS")
+        )
+    ),
    div(class="rail-caption","WORKSPACE"),
    nav_button("nav_overview","01","Overview"),nav_button("nav_skills","02","Skill studio"),nav_button("nav_jobs","03","Job explorer"),nav_button("nav_quality","04","Data & methods"),
    div(class="rail-bottom",span(class="source-dot"),strong("Adzuna / India"),p("An exploration of collected technology job listings."),span(class="rail-credit","Sanjeev T K\nHridhayansh Reddi Bommana"))
@@ -142,7 +166,7 @@ server <- function(input,output,session) {
  # Navigation uses action buttons; active state is supplied through a tiny R-rendered stylesheet.
  output$page_title <- renderText(pages[[input$pages]])
  output$page_subtitle <- renderText(subtitles[[input$pages]])
- output$nav_style <- renderUI({ req(input$pages); tags$style(HTML(paste0("#nav_",input$pages,"{background:rgba(80,217,186,.13)!important;color:#effff9!important;border-color:rgba(80,217,186,.25)!important} #nav_",input$pages," .nav-number{color:#65e4c5}"))) })
+ output$nav_style <- renderUI({ req(input$pages); tags$style(HTML(paste0("#nav_",input$pages,"{background:var(--accent-soft)!important;color:var(--text)!important;border-color:var(--border)!important} #nav_",input$pages," .nav-number{color:var(--text)!important}"))) })
  filtered_data <- function(ignore_city=FALSE) {
   d<-data()
   if(!"city" %in% names(d)) d$city<-normalize_city(d$location)
@@ -176,15 +200,20 @@ server <- function(input,output,session) {
   metric<-function(label,value,note,accent=FALSE) div(class=paste("metric",if(accent) "metric-accent" else ""),span(class="metric-label",label),strong(class="metric-value",value),span(class="metric-note",note))
   div(class="metrics",metric("COLLECTED LISTINGS",format(nrow(d),big.mark=","),"Within the current selection",TRUE),metric("COMPANIES",length(unique(d$company[d$company!="Unknown"])),"Distinct known company labels"),metric("SKILLS DETECTED",length(unique(s$skill)),"Normalized dictionary matches"),metric("SALARY BOUNDS PRESENT",paste0(coverage,"%"),"Coverage is not verification"))
  })
- colors<-c("#18a58f","#35a6a1","#edac65","#2f9e8f","#62cbb6","#d98b9c","#7ea384","#bac1ce","#d6bf78","#82b9c3","#8de0cf")
+ colors<-c("#343a36","#626a63","#858d85","#a4aaa3","#c0c5be","#777d86","#9298a0","#b0b5bb","#d0d3d1","#5c625e","#9da29d")
  finish<-function(p,margin=list(l=15,r=20,t=15,b=25)) {
-  dark<-is.null(input$theme_toggle) || input$theme_toggle %% 2 == 0
-  font_color<-if(dark) "#d0dae4" else "#64748b"
-  p<-layout(p,paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)",
-    font=list(family="Inter, ui-sans-serif, system-ui, sans-serif",size=12,color=font_color),margin=margin)
+  dark <- identical(input$theme_mode, "dark")
+  font_color <- if (dark) "#c9cec7" else "#555b55"
+  grid_color <- if (dark) "rgba(190,196,188,0.16)" else "rgba(70,76,70,0.12)"
+  axis_line <- if (dark) "rgba(190,196,188,0.28)" else "rgba(70,76,70,0.25)"
+  p <- layout(p, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+    font=list(family="Inter, ui-sans-serif, system-ui, sans-serif",size=12,color=font_color),
+    xaxis=list(color=font_color, gridcolor=grid_color, linecolor=axis_line, zerolinecolor=axis_line, automargin=TRUE),
+    yaxis=list(color=font_color, gridcolor=grid_color, linecolor=axis_line, zerolinecolor=axis_line, automargin=TRUE),
+    margin=margin)
   config(p,displayModeBar=FALSE,responsive=TRUE)
  }
- bars<-function(z,color="#18a58f",source=NULL) {
+ bars<-function(z,color="#626a63",source=NULL) {
   shiny::validate(shiny::need(nrow(z)>0,"No records match this selection. Try resetting the filters."))
   z<-z[nrow(z):1,,drop=FALSE]
   p<-plot_ly(z,x=~listings,y=~label,type="bar",orientation="h",source=source,marker=list(color=color),hovertemplate="%{y}<br>%{x:,d} listings<extra></extra>")
@@ -193,28 +222,12 @@ server <- function(input,output,session) {
     yaxis=list(title="",categoryorder="array",categoryarray=z$label,automargin=TRUE,tickfont=list(size=11)),
     bargap=.38),list(l=12,r=25,t=10,b=42))
  }
- output$top_skills<-renderPlotly(bars(counts(skill_rows(filtered())$skill,8)))
+ output$top_skills<-renderPlotly(bars(counts(skill_rows(filtered())$skill,8),"#555d56"))
  output$locations<-renderPlotly({
   d<-filtered_data(ignore_city=TRUE)
   z<-counts(d$city,10)
-  bars(z,"#38b9a7",source="city_plot")
+  bars(z,"#747c75",source="city_plot")
  })
- 
-output$companies <- renderPlotly({
-  d <- filtered()
-
-  d <- d[
-    !is.na(d$company) &
-    nzchar(trimws(d$company)) &
-    d$company != "Unknown",
-    ,
-    drop = FALSE
-  ]
-
-  z <- counts(d$company, 10)
-  bars(z, "#18a58f")
-})
-
  observeEvent(event_data("plotly_click",source="city_plot"),{
   click<-event_data("plotly_click",source="city_plot")
   if(is.null(click)||is.null(click$y)) return()
@@ -226,8 +239,8 @@ output$companies <- renderPlotly({
  output$role_mix<-renderPlotly({
   z<-counts(filtered()$role,20);shiny::validate(shiny::need(nrow(z)>0,"No records match this selection."))
   p<-plot_ly(z,labels=~label,values=~listings,type="pie",hole=.68,sort=FALSE,marker=list(colors=colors,line=list(color="white",width=3)),textinfo="none",hovertemplate="%{label}<br>%{value} listings (%{percent})<extra></extra>")
-  dark<-is.null(input$theme_toggle) || input$theme_toggle %% 2 == 0
-  center_color<-if(dark) "#dffcf3" else "#18312d"
+  dark<-identical(input$theme_mode,"dark")
+  center_color<-if(dark) "#eceee9" else "#202321"
   finish(layout(p,showlegend=TRUE,legend=list(orientation="h",x=0,y=-.05,font=list(size=11)),
     annotations=list(list(text=paste0("<b>",nrow(z),"</b><br>role groups"),x=.5,y=.5,showarrow=FALSE,
       font=list(size=17,color=center_color)))),list(l=8,r=8,t=5,b=20))
@@ -237,7 +250,7 @@ output$companies <- renderPlotly({
   keys<-input$compare
   nums<-vapply(keys,function(k)sum(vapply(d$skills,function(s)k %in% s,logical(1))),integer(1))
   z<-data.frame(skill=keys,n=nums,pct=100*nums/nrow(d));z<-z[order(z$pct),]
-  p<-plot_ly(z,x=~pct,y=~skill,type="bar",orientation="h",marker=list(color="#18a58f"),customdata=~n,hovertemplate="%{y}<br>%{x:.1f}% / %{customdata} listings<extra></extra>")
+  p<-plot_ly(z,x=~pct,y=~skill,type="bar",orientation="h",marker=list(color="#626a63"),customdata=~n,hovertemplate="%{y}<br>%{x:.1f}% / %{customdata} listings<extra></extra>")
   finish(layout(p,xaxis=list(title="% of selected listings",range=c(0,max(10,max(z$pct)*1.2)),gridcolor="rgba(148,163,184,0.18)"),yaxis=list(title="",categoryorder="array",categoryarray=z$skill),bargap=.5))
  })
  output$skill_insights<-renderUI({
@@ -257,8 +270,8 @@ output$companies <- renderPlotly({
    den<-sum(d$role==roles[j]);num<-sum(s$role==roles[j]&s$skill==skills[i]);m[i,j]<-100*num/den
    hover[i,j]<-paste0(skills[i],"<br>",roles[j],"<br>",num," of ",den," listings (",round(m[i,j],1),"%)")
   }
-  dark<-is.null(input$theme_toggle) || input$theme_toggle %% 2 == 0
-  heat_colors<-if(dark) c("#163a33","#52c6aa","#d5fff0") else c("#f0faf6","#82d7bf","#087d69")
+  dark<-identical(input$theme_mode,"dark")
+  heat_colors<-if(dark) c("#292e29","#777f76","#e0e4dc") else c("#f0f1ed","#a9afa7","#343a36")
   heat_scale<-list(c(0,heat_colors[1]),c(0.5,heat_colors[2]),c(1,heat_colors[3]))
   p<-plot_ly(x=roles,y=skills,z=m,type="heatmap",text=hover,hovertemplate="%{text}<extra></extra>",
     zmin=0,zmax=100,colorscale=heat_scale,xgap=2,ygap=2,colorbar=list(title="%",thickness=12))
@@ -286,9 +299,23 @@ output$companies <- renderPlotly({
    p(class="muted",paste("Salary status:",row$salary_status[1])),
    if(safe)tags$a("Open original listing",href=url,target="_blank",rel="noopener noreferrer",class="btn btn-primary"),footer=modalButton("Close")))
  })
- output$salary_quality<-renderPlotly(bars(counts(filtered()$salary_status,5),"#d6a46c"))
+ output$salary_quality<-renderPlotly(bars(counts(filtered()$salary_status,5),"#858d85"))
  output$quality<-renderDT({d<-filtered();z<-data.frame(Check=c("Listings","Missing job IDs","Unknown companies","Unknown locations","No detected skills","Missing dates","Invalid salary ranges"),Count=c(nrow(d),sum(is.na(d$job_id)|d$job_id==""),sum(d$company=="Unknown"),sum(d$location=="Unknown"),sum(lengths(d$skills)==0),sum(is.na(d$date)),sum(d$salary_status=="Invalid range")));datatable(z,rownames=FALSE,escape=TRUE,options=list(dom="t",paging=FALSE,ordering=FALSE))})
- output$salary_hist<-renderPlotly({x<-filtered()$salary_midpoint;x<-x[is.finite(x)];shiny::validate(shiny::need(length(x)>0,"No eligible numeric midpoints."));finish(layout(plot_ly(x=x,type="histogram",marker=list(color="#d6a46c")),xaxis=list(title="Raw numeric midpoint: period / units unverified"),yaxis=list(title="Listings")))})
+ output$salary_hist <- renderPlotly({
+  x <- filtered()$salary_midpoint
+  x <- x[is.finite(x)]
+  shiny::validate(shiny::need(length(x) > 0, "No eligible numeric midpoints."))
+  dark <- identical(input$theme_mode, "dark")
+  bar_color <- if (dark) "#b8beb5" else "#737b73"
+  grid_color <- if (dark) "rgba(190,196,188,0.16)" else "rgba(70,76,70,0.12)"
+  p <- plot_ly(x=x, type="histogram", nbinsx=12,
+    marker=list(color=bar_color, line=list(color=if (dark) "#d8ddd5" else "#4d554e", width=0.6)),
+    hovertemplate="Midpoint: %{x:,.0f}<br>Listings: %{y}<extra></extra>")
+  finish(layout(p,
+    xaxis=list(title="Raw numeric midpoint (period / units unverified)", gridcolor=grid_color, automargin=TRUE, zeroline=FALSE),
+    yaxis=list(title="Listings", gridcolor=grid_color, rangemode="tozero", automargin=TRUE),
+    bargap=0.08), list(l=65,r=24,t=12,b=65))
+})
  output$date_plot<-renderPlotly({
   x<-filtered()$date
   x<-x[!is.na(x)]
@@ -297,7 +324,7 @@ output$companies <- renderPlotly({
   names(z)<-c("date","listings")
   z$date<-as.Date(as.character(z$date))
   z<-z[z$listings>0,,drop=FALSE]
-  p<-plot_ly(z,x=~date,y=~listings,type="bar",marker=list(color="#49b9a5"),
+  p<-plot_ly(z,x=~date,y=~listings,type="bar",marker=list(color="#737b73"),
     hovertemplate="%{x|%d %b %Y}<br>%{y:,d} listings<extra></extra>")
   date_ticks<-pretty(range(z$date),n=min(8,nrow(z)))
   date_ticks<-as.Date(date_ticks,origin="1970-01-01")
