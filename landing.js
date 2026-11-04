@@ -22,9 +22,9 @@
             /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?(\/.*)?$/i.test(configuredUrl)
           )
         ) {
-      link.href = configuredUrl;
+      link.href = "https://techpulse-gateway.sanjeevkarunanithy.workers.dev/dashboard/";
       link.target = "_self";
-      link.rel = "noopener noreferrer";
+      link.removeAttribute("rel");
     } else {
       link.href = "#explore";
       link.addEventListener("click", (event) => {
