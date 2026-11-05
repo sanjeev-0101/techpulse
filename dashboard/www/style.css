@@ -161,15 +161,68 @@ body {
 .modal-content { border: 1px solid var(--border); border-radius: 5px; background: var(--surface); color: var(--text); box-shadow: 0 18px 60px rgba(0,0,0,.18); }
 .modal-header, .modal-footer { border-color: var(--border); }
 .modal-title { color: var(--text); font-size: 16px; font-weight: 650; }
-.dataTables_wrapper { color: var(--text); font-size: 10px; }
-table.dataTable { width: 100% !important; border-collapse: collapse !important; color: var(--text) !important; }
-table.dataTable thead th { padding: 10px 9px !important; border-bottom: 1px solid var(--border-strong) !important; color: var(--muted) !important; font-size: 8px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; }
-table.dataTable tbody td { padding: 10px 9px !important; border-top: 1px solid var(--border) !important; color: var(--text) !important; font-size: 10px; }
-table.dataTable tbody tr, table.dataTable tbody tr:nth-child(even) { background: var(--surface) !important; }
-table.dataTable tbody tr:hover, table.dataTable tbody tr.selected { background: var(--surface-2) !important; }
-.dataTables_wrapper .dataTables_filter input, .dataTables_wrapper .dataTables_length select { padding: 5px 8px; border: 1px solid var(--border-strong) !important; border-radius: 3px; background: var(--surface) !important; color: var(--text) !important; font-size: 10px; }
-.dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_paginate { color: var(--muted) !important; }
-.dataTables_wrapper .paginate_button { color: var(--muted) !important; }
+.dataTables_wrapper {
+  color: var(--text);
+  font-size: 10px;
+}
+
+table.dataTable {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  color: var(--text) !important;
+  --bs-table-bg: var(--surface);
+  --bs-table-color: var(--text);
+  --bs-table-striped-bg: var(--surface);
+  --bs-table-hover-bg: var(--surface-2);
+}
+
+table.dataTable thead th {
+  padding: 10px 9px !important;
+  border-bottom: 1px solid var(--border-strong) !important;
+  color: var(--muted) !important;
+  background: var(--surface-2) !important;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+
+table.dataTable tbody tr,
+table.dataTable tbody tr:nth-child(even) {
+  background: var(--surface) !important;
+}
+
+table.dataTable tbody td {
+  padding: 10px 9px !important;
+  border-top: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  background: var(--surface) !important;
+  font-size: 10px;
+}
+
+table.dataTable tbody tr:hover td,
+table.dataTable tbody tr.selected td {
+  background: var(--surface-2) !important;
+}
+
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+  padding: 5px 8px;
+  border: 1px solid var(--border-strong) !important;
+  border-radius: 3px;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  font-size: 10px;
+}
+
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+  color: var(--muted) !important;
+}
+
+.dataTables_wrapper .paginate_button {
+  color: var(--muted) !important;
+}
 .nav-tabs, .tab-content { border-color: var(--border); }
 .form-check-input { border-color: var(--border-strong); background-color: var(--surface); }
 .form-check-input:checked { border-color: var(--text); background-color: var(--text); }
